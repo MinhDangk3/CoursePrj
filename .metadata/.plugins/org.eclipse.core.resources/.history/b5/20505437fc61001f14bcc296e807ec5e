@@ -1,0 +1,43 @@
+package iuh.fit.se;
+
+import java.util.Scanner;
+
+public class CoursePri {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        CourseList courseList = new CourseList(100);
+
+        // Add courses to the list
+        courseList.addCourse(new Course("CSE101", "Introduction to Programming", 3, "Computer Science"));
+        courseList.addCourse(new Course("CSE102", "Data Structures", 4, "Computer Science"));
+        courseList.addCourse(new Course("MAT101", "Calculus I", 3, "Mathematics"));
+        courseList.addCourse(new Course("PHY101", "Physics I", 4, "Physics"));
+
+        // Display all courses
+        System.out.println("List of all courses:");
+        courseList.getAllCourses();
+
+        // Remove a course
+        System.out.println("\nRemoving course with ID 'MAT101'...");
+        courseList.removeCourse("MAT101");
+        courseList.getAllCourses();
+
+        // Find courses by title
+        System.out.println("\nFinding courses by title 'Data':");
+        Course[] foundByTitle = courseList.findCoursesByTitle("Data");
+        for (Course c : foundByTitle) {
+            System.out.println(c);
+        }
+
+        // Sort courses by title
+        System.out.println("\nSorting courses by title...");
+        courseList.sortCoursesByTitle();
+        courseList.getAllCourses();
+
+        // Find the department with the most courses
+        System.out.println("\nDepartment with most courses: " + courseList.departmentWithMostCourses());
+
+        scanner.close();
+    }
+}
+
